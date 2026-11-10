@@ -1,0 +1,57 @@
+[
+  {
+    "doc_id": "quarterly_report",
+    "file": "quarterly_report.pdf",
+    "truth_file": "quarterly_report.truth.json"
+  },
+  {
+    "doc_id": "stamped_invoice",
+    "file": "stamped_invoice.pdf",
+    "truth_file": "stamped_invoice.truth.json"
+  },
+  {
+    "doc_id": "control_contract",
+    "file": "control_contract.pdf",
+    "truth_file": "control_contract.truth.json"
+  },
+  {
+    "doc_id": "inspection_form",
+    "file": "inspection_form.pdf",
+    "truth_file": "inspection_form.truth.json"
+  },
+  {
+    "doc_id": "floor_plan_diagram",
+    "file": "floor_plan_diagram.pdf",
+    "truth_file": "floor_plan_diagram.truth.json"
+  },
+  {
+    "doc_id": "scanned_contract",
+    "file": "scanned_contract.pdf",
+    "truth_file": "scanned_contract.truth.json"
+  },
+  {
+    "doc_id": "multipage_rate_table",
+    "file": "multipage_rate_table.pdf",
+    "truth_file": "multipage_rate_table.truth.json"
+  },
+  {
+    "doc_id": "pitch_deck",
+    "file": "pitch_deck.pdf",
+    "truth_file": "pitch_deck.truth.json"
+  },
+  {
+    "doc_id": "receipt_photo",
+    "file": "receipt_photo.jpg",
+    "truth_file": "receipt_photo.truth.json"
+  },
+  {
+    "doc_id": "whiteboard_photo",
+    "file": "whiteboard_photo.png",
+    "truth_file": "whiteboard_photo.truth.json"
+  },
+  {
+    "doc_id": "claim_packet",
+    "file": "claim_packet.pdf",
+    "truth_file": "claim_packet.truth.json"
+  }
+]

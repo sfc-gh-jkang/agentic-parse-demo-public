@@ -1,0 +1,101 @@
+{
+  "doc_id": "inspection_form",
+  "pages": 2,
+  "visuals": [
+    {
+      "accept_types": [
+        "other",
+        "table",
+        "document_page"
+      ],
+      "bbox": {
+        "bottom_right_x": 0.9118,
+        "bottom_right_y": 0.4682,
+        "top_left_x": 0.0882,
+        "top_left_y": 0.15
+      },
+      "channel": "image",
+      "checkboxes": [
+        {
+          "checked": false,
+          "label": "Gasket intact"
+        },
+        {
+          "checked": true,
+          "label": "No visible corrosion"
+        },
+        {
+          "checked": true,
+          "label": "Weld seams sound"
+        },
+        {
+          "checked": true,
+          "label": "Bolts torqued to spec"
+        },
+        {
+          "checked": true,
+          "label": "Labels legible"
+        },
+        {
+          "checked": false,
+          "label": "Guard in place"
+        },
+        {
+          "checked": true,
+          "label": "No leaks observed"
+        },
+        {
+          "checked": true,
+          "label": "Grounding connected"
+        }
+      ],
+      "image_type": "other",
+      "page": 0,
+      "role": "checklist",
+      "title": "SECTION B - VISUAL CHECKS"
+    },
+    {
+      "bbox": {
+        "bottom_right_x": 0.9118,
+        "bottom_right_y": 0.6636,
+        "top_left_x": 0.0882,
+        "top_left_y": 0.5
+      },
+      "channel": "image",
+      "image_type": "other",
+      "page": 0,
+      "role": "handwriting",
+      "text": [
+        "Hairline crack at weld, east flange.",
+        "Recommend replace gasket before Q4.",
+        "Re-inspect in 30 days - R. Okafor"
+      ]
+    },
+    {
+      "accept_types": [
+        "photo_with_text",
+        "other"
+      ],
+      "bbox": {
+        "bottom_right_x": 0.9118,
+        "bottom_right_y": 0.6045,
+        "top_left_x": 0.0882,
+        "top_left_y": 0.1273
+      },
+      "channel": "image",
+      "crack": {
+        "bbox": {
+          "bottom_right_x": 0.4711,
+          "bottom_right_y": 0.653,
+          "top_left_x": 0.4392,
+          "top_left_y": 0.3437
+        },
+        "location": "weld seam at the pipe-to-flange joint"
+      },
+      "image_type": "photo_with_text",
+      "page": 1,
+      "role": "defect_photo",
+      "visible_text": "D-0417"
+    }
+  ]
+}

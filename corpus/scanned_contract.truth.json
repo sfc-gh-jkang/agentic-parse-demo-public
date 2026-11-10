@@ -1,0 +1,46 @@
+{
+  "doc_id": "scanned_contract",
+  "pages": 2,
+  "visuals": [
+    {
+      "accept_types": [
+        "document_page",
+        "other"
+      ],
+      "bbox": {
+        "bottom_right_x": 1.0,
+        "bottom_right_y": 1.0,
+        "top_left_x": 0.0,
+        "top_left_y": 0.0
+      },
+      "channel": "image",
+      "fee_terms": "$18,500 per month, payable within 45 days of invoice",
+      "image_type": "document_page",
+      "page": 0,
+      "parties": [
+        "Northwind Analytics, Inc.",
+        "Fabrikam Logistics Ltd."
+      ],
+      "skew_degrees": 2.8,
+      "term_months": 36
+    },
+    {
+      "accept_types": [
+        "document_page",
+        "other"
+      ],
+      "bbox": {
+        "bottom_right_x": 1.0,
+        "bottom_right_y": 1.0,
+        "top_left_x": 0.0,
+        "top_left_y": 0.0
+      },
+      "channel": "image",
+      "governing_law": "State of New York",
+      "image_type": "document_page",
+      "notice_days": 90,
+      "page": 1,
+      "skew_degrees": 2.75
+    }
+  ]
+}

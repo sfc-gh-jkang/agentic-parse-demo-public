@@ -1,0 +1,121 @@
+{
+  "doc_id": "floor_plan_diagram",
+  "pages": 1,
+  "visuals": [
+    {
+      "bbox": {
+        "bottom_right_x": 0.9486,
+        "bottom_right_y": 0.9647,
+        "top_left_x": 0.0514,
+        "top_left_y": 0.0824
+      },
+      "channel": "image",
+      "components": [
+        {
+          "label": "Switch SW1",
+          "room": "Lobby"
+        },
+        {
+          "label": "Rack R1",
+          "room": "Server Room"
+        },
+        {
+          "label": "Panel P1",
+          "room": "Server Room"
+        },
+        {
+          "label": "AHU-1",
+          "room": "Storage"
+        }
+      ],
+      "connections": [
+        {
+          "from": "AHU-1",
+          "kind": "duct",
+          "to": "Server Room"
+        },
+        {
+          "from": "Panel P1",
+          "kind": "power",
+          "to": "Rack R1"
+        },
+        {
+          "from": "Rack R1",
+          "kind": "fiber",
+          "to": "Switch SW1"
+        }
+      ],
+      "dimensions": [
+        {
+          "text": "16.0 m"
+        },
+        {
+          "text": "6.0 m"
+        },
+        {
+          "text": "5.0 m"
+        },
+        {
+          "text": "5.0 m"
+        },
+        {
+          "text": "10.0 m"
+        }
+      ],
+      "image_type": "diagram",
+      "legend": [
+        {
+          "kind": "duct",
+          "meaning": "Ventilation duct"
+        },
+        {
+          "kind": "power",
+          "meaning": "Power feed"
+        },
+        {
+          "kind": "fiber",
+          "meaning": "Fiber link"
+        }
+      ],
+      "page": 0,
+      "rooms": [
+        {
+          "depth_m": 5.0,
+          "label": "Lobby",
+          "width_m": 6.0
+        },
+        {
+          "depth_m": 5.0,
+          "label": "Office A",
+          "width_m": 5.0
+        },
+        {
+          "depth_m": 5.0,
+          "label": "Office B",
+          "width_m": 5.0
+        },
+        {
+          "depth_m": 5.0,
+          "label": "Break Room",
+          "width_m": 6.0
+        },
+        {
+          "depth_m": 5.0,
+          "label": "Server Room",
+          "width_m": 5.0
+        },
+        {
+          "depth_m": 5.0,
+          "label": "Storage",
+          "width_m": 5.0
+        }
+      ],
+      "title_block": {
+        "date": "2026-09-18",
+        "drawing_no": "A-101",
+        "revision": "C",
+        "scale": "1:100"
+      }
+    }
+  ]
+}

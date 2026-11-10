@@ -1,0 +1,35 @@
+version: 2
+
+name: AGENTIC_PARSE_DEMO
+database: SNOWFLAKE_EXAMPLE
+schema: AGENTIC_PARSE_DEMO
+query_warehouse: SFE_AGENTIC_PARSE_DEMO_WH
+
+label: "Agentic Parse Demo"
+description: "Compare AI_PARSE_DOCUMENT OCR, LAYOUT and AGENTIC modes on documents with charts, scans, forms and photos."
+icon: public/icon.svg
+
+install:
+  commands:
+    - ["npm", "ci", "--include=dev"]
+
+build:
+  commands:
+    - ["npm", "run", "build"]
+    # For standalone mode
+    - ["cp", "-r", ".next/static", ".next/standalone/.next/static"]
+    - ["cp", "-r", "public", ".next/standalone/public"]
+    # Avoid packaging extra node_modules since standalone includes its own
+    - ["rm", "-rf", "node_modules"]
+
+run:
+  command: ["node", ".next/standalone/server.js"]
+
+ignore:
+  - node_modules
+  - .env*
+  - __pycache__
+  - "*.pyc"
+  - .next
+  - .git
+  - snowflake.log

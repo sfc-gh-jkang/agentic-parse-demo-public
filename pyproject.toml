@@ -1,0 +1,17 @@
+[project]
+name = "agentic-parse-demo"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = ["reportlab>=4.2", "matplotlib>=3.9", "pillow>=11", "numpy>=2", "pypdf>=5"]
+
+[dependency-groups]
+dev = [
+    "pytest>=8",
+    "pyyaml>=6.0.3",
+    "snowflake-connector-python>=3.12",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+markers = ["live: hits live Snowflake (run with LIVE=1)"]

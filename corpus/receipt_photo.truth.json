@@ -1,0 +1,48 @@
+{
+  "doc_id": "receipt_photo",
+  "pages": 1,
+  "visuals": [
+    {
+      "accept_types": [
+        "document_page",
+        "photo_with_text"
+      ],
+      "bbox": {
+        "bottom_right_x": 1,
+        "bottom_right_y": 1,
+        "top_left_x": 0,
+        "top_left_y": 0
+      },
+      "channel": "image",
+      "date": "2026-09-21",
+      "image_type": "document_page",
+      "line_items": [
+        {
+          "amount": 1.79,
+          "description": "Organic bananas 1.2 lb"
+        },
+        {
+          "amount": 5.5,
+          "description": "Sourdough loaf"
+        },
+        {
+          "amount": 6.5,
+          "description": "Oat milk x2"
+        },
+        {
+          "amount": 9.99,
+          "description": "Cold brew 4-pack"
+        },
+        {
+          "amount": 3.49,
+          "description": "Dish soap"
+        }
+      ],
+      "merchant": "Harbor Street Market",
+      "page": 0,
+      "subtotal": 27.27,
+      "tax": 2.18,
+      "total": 29.45
+    }
+  ]
+}

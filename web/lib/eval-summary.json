@@ -1,0 +1,113 @@
+{
+ "date": "2026-11-05",
+ "winner": "claude-sonnet-5-5",
+ "why": "Sonnet 40 vs Opus 40; no honesty gap",
+ "models": [
+  {
+   "model": "claude-sonnet-5-5",
+   "passed": 40,
+   "total": 40,
+   "median_secs": 13.8
+  },
+  {
+   "model": "claude-opus-5-5",
+   "passed": 40,
+   "total": 40,
+   "median_secs": 17.8
+  }
+ ],
+ "trajectory": [
+  {
+   "model": "claude-sonnet-5-5",
+   "id": "multi_step_headline",
+   "expected": [
+    "parse_analytics",
+    "mode_scores",
+    "parsed_documents",
+    "control_app"
+   ],
+   "order": 1.0,
+   "calls": 5,
+   "redundant": 0
+  },
+  {
+   "model": "claude-sonnet-5-5",
+   "id": "recovery_fallback",
+   "expected": [
+    "parsed_documents",
+    "design_docs"
+   ],
+   "order": 1.0,
+   "calls": 2,
+   "redundant": 0
+  },
+  {
+   "model": "claude-sonnet-5-5",
+   "id": "value_worth_it",
+   "expected": [
+    "value_story",
+    "control_app"
+   ],
+   "order": 1.0,
+   "calls": 2,
+   "redundant": 0
+  },
+  {
+   "model": "claude-sonnet-5-5",
+   "id": "data_q3_across_reports",
+   "expected": [
+    "parse_analytics",
+    "control_app"
+   ],
+   "order": 1.0,
+   "calls": 3,
+   "redundant": 0
+  },
+  {
+   "model": "claude-opus-5-5",
+   "id": "multi_step_headline",
+   "expected": [
+    "parse_analytics",
+    "mode_scores",
+    "parsed_documents",
+    "control_app"
+   ],
+   "order": 1.0,
+   "calls": 5,
+   "redundant": 0
+  },
+  {
+   "model": "claude-opus-5-5",
+   "id": "recovery_fallback",
+   "expected": [
+    "parsed_documents",
+    "design_docs"
+   ],
+   "order": 1.0,
+   "calls": 2,
+   "redundant": 0
+  },
+  {
+   "model": "claude-opus-5-5",
+   "id": "value_worth_it",
+   "expected": [
+    "value_story",
+    "control_app"
+   ],
+   "order": 1.0,
+   "calls": 2,
+   "redundant": 0
+  },
+  {
+   "model": "claude-opus-5-5",
+   "id": "data_q3_across_reports",
+   "expected": [
+    "parse_analytics",
+    "control_app"
+   ],
+   "order": 1.0,
+   "calls": 3,
+   "redundant": 0
+  }
+ ]
+}

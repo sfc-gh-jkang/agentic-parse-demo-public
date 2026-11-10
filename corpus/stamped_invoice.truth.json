@@ -1,0 +1,84 @@
+{
+  "doc_id": "stamped_invoice",
+  "pages": 1,
+  "visuals": [
+    {
+      "bbox": {
+        "bottom_right_x": 0.4224,
+        "bottom_right_y": 0.1318,
+        "top_left_x": 0.0882,
+        "top_left_y": 0.0682
+      },
+      "channel": "image",
+      "image_type": "other",
+      "page": 0,
+      "role": "logo",
+      "visible_text": "NORTHWIND"
+    },
+    {
+      "channel": "text",
+      "headers": [
+        "Item",
+        "Qty",
+        "Unit Price",
+        "Amount"
+      ],
+      "image_type": "table",
+      "page": 0,
+      "rows": [
+        [
+          "Data platform subscription (annual)",
+          "1",
+          "$3,200.00",
+          "$3,200.00"
+        ],
+        [
+          "Onboarding workshop",
+          "2",
+          "$425.00",
+          "$850.00"
+        ],
+        [
+          "Premium support add-on",
+          "1",
+          "$236.50",
+          "$236.50"
+        ]
+      ],
+      "total": 4286.5
+    },
+    {
+      "accept_types": [
+        "other",
+        "photo_with_text"
+      ],
+      "bbox": {
+        "bottom_right_x": 0.8118,
+        "bottom_right_y": 0.7091,
+        "top_left_x": 0.5059,
+        "top_left_y": 0.5636
+      },
+      "channel": "image",
+      "date": "2026-09-14",
+      "image_type": "other",
+      "page": 0,
+      "role": "stamp",
+      "visible_text": "PAID"
+    },
+    {
+      "bbox": {
+        "bottom_right_x": 0.3941,
+        "bottom_right_y": 0.8545,
+        "top_left_x": 0.0882,
+        "top_left_y": 0.7909
+      },
+      "channel": "image",
+      "context": {
+        "caption_signer": "Dana Whitfield"
+      },
+      "image_type": "other",
+      "page": 0,
+      "role": "signature"
+    }
+  ]
+}

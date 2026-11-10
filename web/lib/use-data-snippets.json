@@ -1,0 +1,51 @@
+{
+  "doc_links": {
+    "parse": "https://docs.snowflake.com/en/user-guide/snowflake-cortex/parse-document",
+    "ai_extract": "https://docs.snowflake.com/en/sql-reference/functions/ai_extract",
+    "search": "https://docs.snowflake.com/en/sql-reference/sql/create-cortex-search",
+    "dynamic_table": "https://docs.snowflake.com/en/user-guide/dynamic-tables/supported-queries"
+  },
+  "snippets": [
+    {
+      "id": "pages",
+      "title": "Its pages",
+      "kind": "read",
+      "blurb": "The AGENTIC text of each page of this Document, one row per page.",
+      "doc_link": "parse",
+      "sql": "SELECT p.PAGE_INDEX + 1 AS PAGE, LENGTH(p.CONTENT) AS CHARS, LEFT(p.CONTENT, 160) AS CONTENT\nFROM SNOWFLAKE_EXAMPLE.AGENTIC_PARSE_DEMO.PARSE_PAGES p\nJOIN SNOWFLAKE_EXAMPLE.AGENTIC_PARSE_DEMO.LATEST_RUNS l ON l.RUN_ID = p.RUN_ID\nWHERE l.MODE = 'AGENTIC' AND p.DOC_ID = '{doc}'\nORDER BY p.PAGE_INDEX"
+    },
+    {
+      "id": "visual_rows",
+      "title": "Its visuals as rows",
+      "kind": "read",
+      "blurb": "Every chart value AGENTIC read, one row per value (view VISUAL_DATA_POINTS).",
+      "doc_link": "parse",
+      "sql": "SELECT PAGE_NUMBER, CHART_TITLE, SERIES, LABEL, VALUE, UNIT\nFROM SNOWFLAKE_EXAMPLE.AGENTIC_PARSE_DEMO.VISUAL_DATA_POINTS\nWHERE DOC_ID = '{doc}'\nORDER BY PAGE_INDEX, VISUAL_ID, POINT_ID\nLIMIT 50"
+    },
+    {
+      "id": "search",
+      "title": "A Cortex Search query",
+      "kind": "read",
+      "blurb": "Search this Document's parsed pages and Visual summaries with the PARSED_DOCS_SEARCH service.",
+      "doc_link": "search",
+      "sql": "SELECT PARSE_JSON(SNOWFLAKE.CORTEX.SEARCH_PREVIEW(\n  'SNOWFLAKE_EXAMPLE.AGENTIC_PARSE_DEMO.PARSED_DOCS_SEARCH',\n  '{\"query\": \"total\", \"columns\": [\"CHUNK\", \"PAGE\", \"KIND\"], \"filter\": {\"@eq\": {\"DOC_ID\": \"{doc}\"}}, \"limit\": 3}'\n)):results AS RESULTS"
+    },
+    {
+      "id": "ai_extract",
+      "title": "AI_EXTRACT over the parse text",
+      "kind": "billed",
+      "blurb": "Ask questions of page 1's parsed text. This is a billed AI call (tokens in and out); the tab shows its size and asks before running.",
+      "doc_link": "ai_extract",
+      "sql": "SELECT AI_EXTRACT(\n  text => (SELECT p.CONTENT\n           FROM SNOWFLAKE_EXAMPLE.AGENTIC_PARSE_DEMO.PARSE_PAGES p\n           JOIN SNOWFLAKE_EXAMPLE.AGENTIC_PARSE_DEMO.LATEST_RUNS l ON l.RUN_ID = p.RUN_ID\n           WHERE l.MODE = 'AGENTIC' AND p.DOC_ID = '{doc}' AND p.PAGE_INDEX = 0),\n  responseFormat => {'title': 'What is the title of this page?', 'numbers': 'List the main numbers on the page with their labels.'}\n) AS EXTRACTED",
+      "input_sql": "SELECT p.CONTENT AS CONTENT\nFROM SNOWFLAKE_EXAMPLE.AGENTIC_PARSE_DEMO.PARSE_PAGES p\nJOIN SNOWFLAKE_EXAMPLE.AGENTIC_PARSE_DEMO.LATEST_RUNS l ON l.RUN_ID = p.RUN_ID\nWHERE l.MODE = 'AGENTIC' AND p.DOC_ID = '{doc}' AND p.PAGE_INDEX = 0"
+    },
+    {
+      "id": "dynamic_table",
+      "title": "A Dynamic Table for new files",
+      "kind": "pattern",
+      "blurb": "Pattern, not run here: keep extracted fields current as new Documents are parsed into PARSE_RUNS. Replace MY_DB, MY_SCHEMA and MY_WH. Observed on 2026-11-05 on this account (one page, scratch copy of this exact statement): refresh_mode INCREMENTAL, the creation refresh made one AI_EXTRACT call (148 tokens, 0.00082 credits in usage history), a manual refresh with nothing new was NO_DATA and made no call. AI_EXTRACT is not named in the supported-queries table, so check SHOW DYNAMIC TABLES (refresh_mode) on your own account after creating it. Each new or changed page is a billed AI_EXTRACT call.",
+      "doc_link": "dynamic_table",
+      "sql": "CREATE OR REPLACE DYNAMIC TABLE MY_DB.MY_SCHEMA.PAGE_FIELDS\n  TARGET_LAG = '1 hour'\n  WAREHOUSE = MY_WH\nAS\nSELECT p.DOC_ID, p.PAGE_INDEX,\n       AI_EXTRACT(text => p.CONTENT, responseFormat => {'total': 'What is the total amount, if any?'}) AS FIELDS\nFROM SNOWFLAKE_EXAMPLE.AGENTIC_PARSE_DEMO.PARSE_PAGES p\nWHERE p.MODE = 'AGENTIC'"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+.venv/
+__pycache__/
+.pytest_cache/
+node_modules/
+.env
+.DS_Store
+corpus_packs/
+.build/
+config.env
+
+# Secrets & credentials
+.env.*
+!.env.example
+*.p8
+*.pem
+*.key
+*token*.txt
+*.token
+credentials.json
+**/secrets/
+.snowflake/

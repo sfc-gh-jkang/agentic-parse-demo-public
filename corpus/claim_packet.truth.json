@@ -1,0 +1,531 @@
+{
+  "doc_id": "claim_packet",
+  "pages": 6,
+  "visuals": [
+    {
+      "bbox": {
+        "bottom_right_x": 0.4224,
+        "bottom_right_y": 0.1318,
+        "top_left_x": 0.0882,
+        "top_left_y": 0.0682
+      },
+      "channel": "image",
+      "image_type": "other",
+      "page": 0,
+      "role": "logo",
+      "visible_text": "NORTHWIND"
+    },
+    {
+      "accept_types": [
+        "other",
+        "photo_with_text"
+      ],
+      "bbox": {
+        "bottom_right_x": 0.8471,
+        "bottom_right_y": 0.4697,
+        "top_left_x": 0.5412,
+        "top_left_y": 0.3188
+      },
+      "channel": "image",
+      "date": "2026-09-16",
+      "image_type": "other",
+      "page": 0,
+      "role": "stamp",
+      "visible_text": "RECEIVED"
+    },
+    {
+      "bbox": {
+        "bottom_right_x": 0.3471,
+        "bottom_right_y": 0.5577,
+        "top_left_x": 0.0882,
+        "top_left_y": 0.4884
+      },
+      "channel": "image",
+      "context": {
+        "caption_signer": "Dana Whitfield"
+      },
+      "image_type": "other",
+      "page": 0,
+      "role": "signature"
+    },
+    {
+      "accept_types": [
+        "document_page",
+        "other"
+      ],
+      "bbox": {
+        "bottom_right_x": 1.0,
+        "bottom_right_y": 1.0,
+        "top_left_x": 0.0,
+        "top_left_y": 0.0
+      },
+      "channel": "image",
+      "checkboxes": [
+        {
+          "checked": false,
+          "group": "Type of loss",
+          "label": "Fire"
+        },
+        {
+          "checked": true,
+          "group": "Type of loss",
+          "label": "Water"
+        },
+        {
+          "checked": false,
+          "group": "Type of loss",
+          "label": "Wind"
+        },
+        {
+          "checked": false,
+          "group": "Type of loss",
+          "label": "Theft"
+        },
+        {
+          "checked": true,
+          "group": "Photos attached",
+          "label": "Yes"
+        },
+        {
+          "checked": false,
+          "group": "Photos attached",
+          "label": "No"
+        },
+        {
+          "checked": false,
+          "group": "Report filed",
+          "label": "Yes"
+        },
+        {
+          "checked": true,
+          "group": "Report filed",
+          "label": "No"
+        }
+      ],
+      "context": {
+        "skew_degrees": 2.23
+      },
+      "fields": {
+        "cause_of_loss": "burst pipe",
+        "claimant": "Northwind Analytics, Inc.",
+        "date_of_loss": "2026-09-12",
+        "estimated_loss": "$36,545.00",
+        "policy_number": "PL-2026-44718"
+      },
+      "image_type": "document_page",
+      "page": 1
+    },
+    {
+      "bbox": {
+        "bottom_right_x": 0.9412,
+        "bottom_right_y": 0.3091,
+        "top_left_x": 0.6941,
+        "top_left_y": 0.1182
+      },
+      "channel": "image",
+      "image_type": "other",
+      "page": 1,
+      "role": "sticky_note",
+      "text": [
+        "Call before",
+        "site visit - ask",
+        "for Bay C access"
+      ]
+    },
+    {
+      "accept_types": [
+        "photo_with_text",
+        "other"
+      ],
+      "bbox": {
+        "bottom_right_x": 0.4882,
+        "bottom_right_y": 0.3409,
+        "top_left_x": 0.0882,
+        "top_left_y": 0.1091
+      },
+      "channel": "image",
+      "image_type": "photo_with_text",
+      "page": 2,
+      "subject": "water-stained ceiling tiles",
+      "visible_text": "2026-09-13 08:42"
+    },
+    {
+      "accept_types": [
+        "photo_with_text",
+        "other"
+      ],
+      "bbox": {
+        "bottom_right_x": 0.9118,
+        "bottom_right_y": 0.3409,
+        "top_left_x": 0.5118,
+        "top_left_y": 0.1091
+      },
+      "channel": "image",
+      "image_type": "photo_with_text",
+      "page": 2,
+      "subject": "warped floor boards",
+      "visible_text": "2026-09-13 08:47"
+    },
+    {
+      "bbox": {
+        "bottom_right_x": 0.7471,
+        "bottom_right_y": 0.7713,
+        "top_left_x": 0.0882,
+        "top_left_y": 0.4455
+      },
+      "channel": "image",
+      "image_type": "diagram",
+      "leak": {
+        "marker_text": "LEAK",
+        "room": "Server Room"
+      },
+      "page": 2,
+      "rooms": [
+        {
+          "label": "Lobby"
+        },
+        {
+          "label": "Office A"
+        },
+        {
+          "label": "Office B"
+        },
+        {
+          "label": "Break Room"
+        },
+        {
+          "label": "Server Room"
+        },
+        {
+          "label": "Storage"
+        }
+      ]
+    },
+    {
+      "channel": "text",
+      "headers": [
+        "Item",
+        "Category",
+        "Qty",
+        "Unit",
+        "Unit Price",
+        "Amount"
+      ],
+      "image_type": "table",
+      "page": 3,
+      "rows": [
+        [
+          "Water extraction and drying",
+          "Mitigation",
+          "1",
+          "lot",
+          "$4,250.00",
+          "$4,250.00"
+        ],
+        [
+          "Ceiling tile and grid replacement",
+          "Structure",
+          "340",
+          "sq ft",
+          "$14.50",
+          "$4,930.00"
+        ],
+        [
+          "Drywall repair",
+          "Structure",
+          "220",
+          "sq ft",
+          "$9.25",
+          "$2,035.00"
+        ],
+        [
+          "Flooring replacement",
+          "Flooring",
+          "480",
+          "sq ft",
+          "$18.00",
+          "$8,640.00"
+        ],
+        [
+          "Pipe and flange repair",
+          "Plumbing",
+          "1",
+          "lot",
+          "$6,300.00",
+          "$6,300.00"
+        ],
+        [
+          "Electrical inspection and rewire",
+          "Electrical",
+          "1",
+          "lot",
+          "$3,150.00",
+          "$3,150.00"
+        ],
+        [
+          "Equipment relocation and storage",
+          "Contents",
+          "1",
+          "lot",
+          "$5,800.00",
+          "$5,800.00"
+        ],
+        [
+          "Interior repainting",
+          "Finishes",
+          "600",
+          "sq ft",
+          "$2.40",
+          "$1,440.00"
+        ]
+      ],
+      "total": 36545.0
+    },
+    {
+      "bbox": {
+        "bottom_right_x": 0.4882,
+        "bottom_right_y": 0.6436,
+        "top_left_x": 0.0882,
+        "top_left_y": 0.3636
+      },
+      "channel": "image",
+      "chart_type": "bar",
+      "image_type": "chart",
+      "page": 3,
+      "series": [
+        {
+          "points": [
+            {
+              "x": "Mitigation",
+              "y": 4250.0
+            },
+            {
+              "x": "Structure",
+              "y": 6965.0
+            },
+            {
+              "x": "Flooring",
+              "y": 8640.0
+            },
+            {
+              "x": "Plumbing",
+              "y": 6300.0
+            },
+            {
+              "x": "Electrical",
+              "y": 3150.0
+            },
+            {
+              "x": "Contents",
+              "y": 5800.0
+            },
+            {
+              "x": "Finishes",
+              "y": 1440.0
+            }
+          ]
+        }
+      ],
+      "title": "Estimate by Category (USD)",
+      "y_axis": {
+        "label": "USD"
+      }
+    },
+    {
+      "bbox": {
+        "bottom_right_x": 0.9118,
+        "bottom_right_y": 0.6436,
+        "top_left_x": 0.5118,
+        "top_left_y": 0.3636
+      },
+      "channel": "image",
+      "chart_type": "pie",
+      "image_type": "chart",
+      "page": 3,
+      "series": [
+        {
+          "points": [
+            {
+              "x": "Covered",
+              "y": 29305.0
+            },
+            {
+              "x": "Uncovered",
+              "y": 7240.0
+            }
+          ]
+        }
+      ],
+      "title": "Covered vs Uncovered (USD)"
+    },
+    {
+      "accept_types": [
+        "chart",
+        "table"
+      ],
+      "bbox": {
+        "bottom_right_x": 1.0,
+        "bottom_right_y": 1.0,
+        "top_left_x": 0.0,
+        "top_left_y": 0.0
+      },
+      "channel": "image",
+      "chart_type": "heatmap",
+      "col_labels": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8"
+      ],
+      "context": {
+        "content_rotation_degrees_ccw": 90,
+        "skew_degrees": 0.96
+      },
+      "image_type": "chart",
+      "max_cell": {
+        "col": "5",
+        "row": "C",
+        "value": 38.5
+      },
+      "page": 4,
+      "row_labels": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F"
+      ],
+      "title": "Moisture Readings - Server Room floor grid, 2026-09-13",
+      "unit": "% moisture content",
+      "values": [
+        [
+          10.1,
+          10.4,
+          12.9,
+          15.3,
+          14.5,
+          14.9,
+          12.2,
+          11.5
+        ],
+        [
+          11.1,
+          12.7,
+          16.4,
+          22.7,
+          27.6,
+          24.0,
+          16.7,
+          11.3
+        ],
+        [
+          11.4,
+          11.7,
+          17.2,
+          31.2,
+          38.5,
+          30.7,
+          19.1,
+          12.3
+        ],
+        [
+          11.2,
+          11.2,
+          14.8,
+          22.9,
+          28.4,
+          24.1,
+          14.8,
+          12.5
+        ],
+        [
+          10.9,
+          10.5,
+          12.0,
+          15.2,
+          16.2,
+          13.4,
+          12.5,
+          12.1
+        ],
+        [
+          10.5,
+          10.1,
+          11.6,
+          12.5,
+          11.7,
+          10.2,
+          11.9,
+          11.1
+        ]
+      ]
+    },
+    {
+      "bbox": {
+        "bottom_right_x": 0.9118,
+        "bottom_right_y": 0.3394,
+        "top_left_x": 0.0882,
+        "top_left_y": 0.1273
+      },
+      "channel": "image",
+      "events": [
+        {
+          "date": "2026-09-12",
+          "label": "Date of loss"
+        },
+        {
+          "date": "2026-09-16",
+          "label": "Claim reported"
+        },
+        {
+          "date": "2026-09-19",
+          "label": "Site inspection"
+        },
+        {
+          "date": "2026-09-26",
+          "label": "Claim approved"
+        }
+      ],
+      "image_type": "infographic",
+      "page": 5
+    },
+    {
+      "accept_types": [
+        "other",
+        "photo_with_text"
+      ],
+      "bbox": {
+        "bottom_right_x": 0.8706,
+        "bottom_right_y": 0.8,
+        "top_left_x": 0.5765,
+        "top_left_y": 0.6549
+      },
+      "channel": "image",
+      "date": "2026-09-26",
+      "image_type": "other",
+      "page": 5,
+      "role": "stamp",
+      "visible_text": "APPROVED"
+    },
+    {
+      "bbox": {
+        "bottom_right_x": 0.3471,
+        "bottom_right_y": 0.8455,
+        "top_left_x": 0.0882,
+        "top_left_y": 0.7761
+      },
+      "channel": "image",
+      "context": {
+        "caption_signer": "Priya Natarajan"
+      },
+      "image_type": "other",
+      "page": 5,
+      "role": "signature"
+    }
+  ]
+}

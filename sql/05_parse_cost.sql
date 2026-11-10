@@ -1,0 +1,61 @@
+-- PARSE_COST: measured AI credits per Parse Mode, joined to Parse Runs by query id.
+-- Source: SNOWFLAKE.ACCOUNT_USAGE.CORTEX_AI_FUNCTIONS_USAGE_HISTORY
+-- (https://docs.snowflake.com/en/sql-reference/account-usage/cortex_ai_functions_usage_history).
+-- Runs not yet in the view (SLA about 5 minutes) are reported as PENDING_RUNS, never estimated.
+USE ROLE AGENTIC_PARSE_DEMO_RL;
+USE WAREHOUSE SFE_AGENTIC_PARSE_DEMO_WH;
+USE SCHEMA SNOWFLAKE_EXAMPLE.AGENTIC_PARSE_DEMO;
+
+CREATE OR REPLACE VIEW PARSE_RUN_COST AS
+WITH runs AS (
+  SELECT r.* FROM PARSE_RUNS r JOIN DOCUMENTS d USING (DOC_ID)
+  WHERE r.ERROR IS NULL AND d.SOURCE <> 'fixture'
+),
+usage AS (
+  SELECT u.QUERY_ID,
+         SUM(u.CREDITS)        AS CREDITS,
+         SUM(u.PAGES)          AS PAGES_BILLED,
+         MAX(u.END_TIME)       AS USAGE_RECORDED_AT
+  FROM (
+    -- One pages figure per usage row: the docs example keys it 'total', live rows use 'input'.
+    SELECT h.QUERY_ID, h.CREDITS, h.END_TIME,
+           MAX(IFF(m.value:key:unit::STRING = 'pages', m.value:value::NUMBER, NULL)) AS PAGES
+    FROM SNOWFLAKE.ACCOUNT_USAGE.CORTEX_AI_FUNCTIONS_USAGE_HISTORY h,
+         LATERAL FLATTEN(h.METRICS, OUTER => TRUE) m
+    WHERE h.FUNCTION_NAME = 'AI_PARSE_DOCUMENT'
+      -- Bound the scan by our own runs; the view keeps 365 days.
+      AND h.START_TIME >= (SELECT DATEADD(hour, -2, MIN(STARTED_AT)) FROM runs)
+    GROUP BY h.QUERY_ID, h.CREDITS, h.END_TIME, h.START_TIME
+  ) u
+  GROUP BY 1
+)
+SELECT r.RUN_ID, r.DOC_ID, r.MODE, r.PAGE_COUNT, r.FINISHED_AT,
+       u.PAGES_BILLED, u.CREDITS, u.USAGE_RECORDED_AT,
+       u.QUERY_ID IS NULL AND r.FINISHED_AT >= DATEADD(day, -365, CURRENT_TIMESTAMP()) AS PENDING
+FROM runs r
+LEFT JOIN usage u ON u.QUERY_ID = r.QUERY_ID;
+
+CREATE OR REPLACE PROCEDURE PARSE_COST(P_DOC_ID STRING DEFAULT NULL)
+RETURNS TABLE (MODE STRING, RUNS INT, MEASURED_RUNS INT, PENDING_RUNS INT, PAGES_BILLED INT,
+               CREDITS NUMBER(18, 6), CREDITS_PER_1K_PAGES NUMBER(18, 4), MEASURED_AT TIMESTAMP_LTZ)
+LANGUAGE SQL
+EXECUTE AS OWNER
+AS
+$$
+DECLARE
+  res RESULTSET DEFAULT (
+    SELECT MODE,
+           COUNT(*)                         AS RUNS,
+           COUNT_IF(NOT PENDING)            AS MEASURED_RUNS,
+           COUNT_IF(PENDING)                AS PENDING_RUNS,
+           SUM(PAGES_BILLED)                AS PAGES_BILLED,
+           SUM(CREDITS)::NUMBER(18, 6)      AS CREDITS,
+           (SUM(CREDITS) / NULLIF(SUM(PAGES_BILLED), 0) * 1000)::NUMBER(18, 4) AS CREDITS_PER_1K_PAGES,
+           CURRENT_TIMESTAMP()              AS MEASURED_AT
+    FROM PARSE_RUN_COST
+    WHERE :P_DOC_ID IS NULL OR DOC_ID = :P_DOC_ID
+    GROUP BY MODE ORDER BY MODE);
+BEGIN
+  RETURN TABLE(res);
+END;
+$$;

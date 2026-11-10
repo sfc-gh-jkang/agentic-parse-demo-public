@@ -1,0 +1,435 @@
+{
+  "doc_id": "multipage_rate_table",
+  "pages": 3,
+  "visuals": [
+    {
+      "channel": "text",
+      "headers": [
+        "Service Code",
+        "Description",
+        "Unit",
+        "Rate (USD)"
+      ],
+      "image_type": "table",
+      "page": 0,
+      "rows": [
+        [
+          "SVC-100",
+          "Freight, palletized (regional)",
+          "pallet",
+          "$38.50"
+        ],
+        [
+          "SVC-101",
+          "Freight, palletized (national)",
+          "pallet",
+          "$74.00"
+        ],
+        [
+          "SVC-102",
+          "Freight, full truckload",
+          "mile",
+          "$3.15"
+        ],
+        [
+          "SVC-103",
+          "Freight, less-than-truckload",
+          "100 lb",
+          "$28.40"
+        ],
+        [
+          "SVC-104",
+          "Expedited freight surcharge",
+          "shipment",
+          "$125.00"
+        ],
+        [
+          "SVC-105",
+          "Liftgate delivery",
+          "stop",
+          "$45.00"
+        ],
+        [
+          "SVC-106",
+          "White-glove delivery",
+          "stop",
+          "$180.00"
+        ],
+        [
+          "SVC-110",
+          "Warehousing, ambient",
+          "sq ft-month",
+          "$0.85"
+        ],
+        [
+          "SVC-111",
+          "Warehousing, climate controlled",
+          "sq ft-month",
+          "$1.60"
+        ],
+        [
+          "SVC-112",
+          "Pallet storage",
+          "pallet-month",
+          "$14.00"
+        ],
+        [
+          "SVC-113",
+          "Pick and pack",
+          "order",
+          "$2.75"
+        ],
+        [
+          "SVC-114",
+          "Cross-dock handling",
+          "pallet",
+          "$6.50"
+        ],
+        [
+          "SVC-115",
+          "Inventory count",
+          "day",
+          "$640.00"
+        ],
+        [
+          "SVC-120",
+          "Courier, same day",
+          "parcel",
+          "$18.00"
+        ],
+        [
+          "SVC-121",
+          "Courier, next day",
+          "parcel",
+          "$9.50"
+        ],
+        [
+          "SVC-122",
+          "Courier, economy",
+          "parcel",
+          "$5.25"
+        ],
+        [
+          "SVC-123",
+          "Parcel returns handling",
+          "parcel",
+          "$3.40"
+        ],
+        [
+          "SVC-124",
+          "Oversize parcel surcharge",
+          "parcel",
+          "$12.00"
+        ],
+        [
+          "SVC-130",
+          "Consulting, analyst",
+          "hour",
+          "$145.00"
+        ],
+        [
+          "SVC-131",
+          "Consulting, senior consultant",
+          "hour",
+          "$210.00"
+        ],
+        [
+          "SVC-132",
+          "Consulting, engagement manager",
+          "hour",
+          "$285.00"
+        ],
+        [
+          "SVC-133",
+          "Workshop facilitation",
+          "day",
+          "$2,400.00"
+        ],
+        [
+          "SVC-134",
+          "Written report",
+          "report",
+          "$3,800.00"
+        ],
+        [
+          "SVC-140",
+          "On-site technician visit",
+          "visit",
+          "$310.00"
+        ],
+        [
+          "SVC-141",
+          "After-hours technician visit",
+          "visit",
+          "$465.00"
+        ],
+        [
+          "SVC-142",
+          "Emergency call-out",
+          "visit",
+          "$620.00"
+        ],
+        [
+          "SVC-143",
+          "Preventive maintenance",
+          "visit",
+          "$380.00"
+        ],
+        [
+          "SVC-144",
+          "Technician travel",
+          "mile",
+          "$1.10"
+        ],
+        [
+          "SVC-150",
+          "Forklift rental",
+          "day",
+          "$185.00"
+        ],
+        [
+          "SVC-151",
+          "Scissor lift rental",
+          "day",
+          "$240.00"
+        ],
+        [
+          "SVC-152",
+          "Pallet jack rental",
+          "day",
+          "$35.00"
+        ],
+        [
+          "SVC-153",
+          "Generator rental",
+          "day",
+          "$290.00"
+        ],
+        [
+          "SVC-154",
+          "Portable storage container",
+          "month",
+          "$195.00"
+        ],
+        [
+          "SVC-155",
+          "Dehumidifier rental",
+          "day",
+          "$48.00"
+        ],
+        [
+          "SVC-160",
+          "Janitorial service",
+          "visit",
+          "$220.00"
+        ],
+        [
+          "SVC-161",
+          "Deep cleaning",
+          "sq ft",
+          "$0.32"
+        ],
+        [
+          "SVC-162",
+          "Waste removal",
+          "pickup",
+          "$135.00"
+        ],
+        [
+          "SVC-163",
+          "Pest control",
+          "visit",
+          "$95.00"
+        ],
+        [
+          "SVC-164",
+          "Security patrol",
+          "hour",
+          "$52.00"
+        ],
+        [
+          "SVC-165",
+          "Reception staffing",
+          "day",
+          "$410.00"
+        ],
+        [
+          "SVC-170",
+          "Project coordination",
+          "hour",
+          "$118.00"
+        ],
+        [
+          "SVC-171",
+          "Site survey",
+          "day",
+          "$1,350.00"
+        ],
+        [
+          "SVC-172",
+          "Safety audit",
+          "audit",
+          "$2,750.00"
+        ],
+        [
+          "SVC-173",
+          "Staff training session",
+          "session",
+          "$1,600.00"
+        ],
+        [
+          "SVC-174",
+          "Compliance filing",
+          "filing",
+          "$450.00"
+        ],
+        [
+          "SVC-175",
+          "Insurance certificate processing",
+          "certificate",
+          "$60.00"
+        ],
+        [
+          "SVC-180",
+          "Packaging materials, standard",
+          "box",
+          "$4.20"
+        ],
+        [
+          "SVC-181",
+          "Packaging materials, custom crate",
+          "crate",
+          "$85.00"
+        ],
+        [
+          "SVC-182",
+          "Labeling and relabeling",
+          "label",
+          "$0.45"
+        ],
+        [
+          "SVC-183",
+          "Shrink wrap",
+          "pallet",
+          "$7.50"
+        ],
+        [
+          "SVC-184",
+          "Document archiving",
+          "box-month",
+          "$3.25"
+        ],
+        [
+          "SVC-185",
+          "Document shredding",
+          "box",
+          "$6.00"
+        ],
+        [
+          "SVC-186",
+          "Mail handling",
+          "month",
+          "$140.00"
+        ]
+      ],
+      "rows_per_page": [
+        34,
+        19
+      ],
+      "spans_pages": [
+        0,
+        1
+      ]
+    },
+    {
+      "bbox": {
+        "bottom_right_x": 0.9118,
+        "bottom_right_y": 0.4896,
+        "top_left_x": 0.0882,
+        "top_left_y": 0.1182
+      },
+      "cells": [
+        [
+          "Service Contract Rate Card 2026",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Region",
+          "Contract Term",
+          "Monthly Volume",
+          "Rate per Pallet"
+        ],
+        [
+          "US",
+          "Spot",
+          "100",
+          "$38.50"
+        ],
+        [
+          "US",
+          "6-month",
+          "500",
+          "$35.25"
+        ],
+        [
+          "US",
+          "12-month",
+          "2,000",
+          "$31.90"
+        ],
+        [
+          "EU",
+          "Spot",
+          "100",
+          "$42.00"
+        ],
+        [
+          "EU",
+          "6-month",
+          "500",
+          "$38.75"
+        ],
+        [
+          "EU",
+          "12-month",
+          "2,000",
+          "$34.60"
+        ]
+      ],
+      "channel": "image",
+      "headers": [
+        "Region",
+        "Contract Term",
+        "Monthly Volume",
+        "Rate per Pallet"
+      ],
+      "image_type": "table",
+      "merges": [
+        {
+          "col": 0,
+          "colspan": 4,
+          "row": 0,
+          "rowspan": 1,
+          "text": "Service Contract Rate Card 2026"
+        },
+        {
+          "col": 0,
+          "colspan": 1,
+          "row": 2,
+          "rowspan": 3,
+          "text": "US"
+        },
+        {
+          "col": 0,
+          "colspan": 1,
+          "row": 5,
+          "rowspan": 3,
+          "text": "EU"
+        }
+      ],
+      "page": 2
+    }
+  ]
+}

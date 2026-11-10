@@ -1,0 +1,140 @@
+{
+  "doc_id": "pitch_deck",
+  "pages": 4,
+  "visuals": [
+    {
+      "bbox": {
+        "bottom_right_x": 0.9364,
+        "bottom_right_y": 0.8136,
+        "top_left_x": 0.0636,
+        "top_left_y": 0.1861
+      },
+      "channel": "image",
+      "image_type": "infographic",
+      "kpis": [
+        {
+          "label": "ARR",
+          "value": "$48.2M"
+        },
+        {
+          "label": "Net revenue retention",
+          "value": "122%"
+        },
+        {
+          "label": "Customers",
+          "value": "2,140"
+        },
+        {
+          "label": "Gross margin",
+          "value": "78%"
+        }
+      ],
+      "page": 1
+    },
+    {
+      "bbox": {
+        "bottom_right_x": 0.5873,
+        "bottom_right_y": 0.8172,
+        "top_left_x": 0.0636,
+        "top_left_y": 0.2299
+      },
+      "channel": "image",
+      "chart_type": "stacked_bar",
+      "image_type": "chart",
+      "page": 2,
+      "series": [
+        {
+          "name": "Platform",
+          "points": [
+            {
+              "x": "FY24",
+              "y": 14.0
+            },
+            {
+              "x": "FY25",
+              "y": 19.5
+            },
+            {
+              "x": "FY26",
+              "y": 26.0
+            }
+          ]
+        },
+        {
+          "name": "AI",
+          "points": [
+            {
+              "x": "FY24",
+              "y": 2.0
+            },
+            {
+              "x": "FY25",
+              "y": 6.5
+            },
+            {
+              "x": "FY26",
+              "y": 14.2
+            }
+          ]
+        },
+        {
+          "name": "Services",
+          "points": [
+            {
+              "x": "FY24",
+              "y": 4.0
+            },
+            {
+              "x": "FY25",
+              "y": 5.5
+            },
+            {
+              "x": "FY26",
+              "y": 8.0
+            }
+          ]
+        }
+      ],
+      "title": "Revenue by Segment (USD millions)",
+      "y_axis": {
+        "label": "USD millions"
+      }
+    },
+    {
+      "bbox": {
+        "bottom_right_x": 0.9364,
+        "bottom_right_y": 0.7634,
+        "top_left_x": 0.0636,
+        "top_left_y": 0.2363
+      },
+      "channel": "image",
+      "edges": [
+        [
+          "Stage",
+          "Parse"
+        ],
+        [
+          "Parse",
+          "Store"
+        ],
+        [
+          "Store",
+          "Search"
+        ],
+        [
+          "Search",
+          "Agent"
+        ]
+      ],
+      "image_type": "diagram",
+      "nodes": [
+        "Stage",
+        "Parse",
+        "Store",
+        "Search",
+        "Agent"
+      ],
+      "page": 3
+    }
+  ]
+}

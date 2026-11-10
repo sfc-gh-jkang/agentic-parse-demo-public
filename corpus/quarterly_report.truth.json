@@ -1,0 +1,130 @@
+{
+  "doc_id": "quarterly_report",
+  "pages": 2,
+  "visuals": [
+    {
+      "bbox": {
+        "bottom_right_x": 0.4824,
+        "bottom_right_y": 0.5091,
+        "top_left_x": 0.0882,
+        "top_left_y": 0.2807
+      },
+      "channel": "image",
+      "chart_type": "bar",
+      "context": {
+        "series_name": "Revenue"
+      },
+      "image_type": "chart",
+      "page": 0,
+      "series": [
+        {
+          "points": [
+            {
+              "x": "Q1",
+              "y": 12.4
+            },
+            {
+              "x": "Q2",
+              "y": 15.1
+            },
+            {
+              "x": "Q3",
+              "y": 13.8
+            },
+            {
+              "x": "Q4",
+              "y": 17.2
+            }
+          ]
+        }
+      ],
+      "title": "Quarterly Revenue (USD millions)",
+      "y_axis": {
+        "label": "USD millions"
+      }
+    },
+    {
+      "bbox": {
+        "bottom_right_x": 0.9118,
+        "bottom_right_y": 0.5091,
+        "top_left_x": 0.5176,
+        "top_left_y": 0.2807
+      },
+      "channel": "image",
+      "chart_type": "line",
+      "context": {
+        "series_name": "Customers"
+      },
+      "image_type": "chart",
+      "page": 0,
+      "series": [
+        {
+          "points": [
+            {
+              "x": "Jan",
+              "y": 1820
+            },
+            {
+              "x": "Feb",
+              "y": 1905
+            },
+            {
+              "x": "Mar",
+              "y": 1990
+            },
+            {
+              "x": "Apr",
+              "y": 2140
+            },
+            {
+              "x": "May",
+              "y": 2210
+            },
+            {
+              "x": "Jun",
+              "y": 2385
+            }
+          ]
+        }
+      ],
+      "title": "Active Customers",
+      "y_axis": {
+        "label": "Customers"
+      }
+    },
+    {
+      "bbox": {
+        "bottom_right_x": 0.7059,
+        "bottom_right_y": 0.5455,
+        "top_left_x": 0.1765,
+        "top_left_y": 0.2386
+      },
+      "channel": "image",
+      "chart_type": "pie",
+      "context": {
+        "series_name": "Share %"
+      },
+      "image_type": "chart",
+      "page": 1,
+      "series": [
+        {
+          "points": [
+            {
+              "x": "North America",
+              "y": 46
+            },
+            {
+              "x": "EMEA",
+              "y": 31
+            },
+            {
+              "x": "APAC",
+              "y": 23
+            }
+          ]
+        }
+      ],
+      "title": "Revenue Mix by Region"
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+-- Agentic Parse Demo: Snowsight-only install (no local tools). Paste into a SQL worksheet and Run All.
+-- Installs with the default names: SNOWFLAKE_EXAMPLE.AGENTIC_PARSE_DEMO, role AGENTIC_PARSE_DEMO_RL,
+-- warehouse SFE_AGENTIC_PARSE_DEMO_WH. For other names use ./setup.sh with config.env.
+-- Needs ACCOUNTADMIN and the 'Snowflake Documentation' Cortex Knowledge Extension (database SNOWFLAKE_DOCUMENTATION).
+-- Not billed: nothing here calls AI_PARSE_DOCUMENT. The billed Corpus parse is snowsight/parse_corpus.sql.
+-- The web app is NOT deployed by this script; see docs/install-snowsight.md (needs the Snowflake CLI).
+-- Docs: https://docs.snowflake.com/en/developer-guide/git/git-setting-up-public
+--       https://docs.snowflake.com/en/sql-reference/sql/execute-immediate-from
+USE ROLE ACCOUNTADMIN;
+CREATE DATABASE IF NOT EXISTS SNOWFLAKE_EXAMPLE COMMENT = 'Snowflake demo projects';
+
+-- 1. Clone the repo into Snowflake.
+CREATE API INTEGRATION IF NOT EXISTS AGENTIC_PARSE_DEMO_GIT_API
+  API_PROVIDER = GIT_HTTPS_API
+  API_ALLOWED_PREFIXES = ('https://github.com/sfc-gh-jkang/')
+  ENABLED = TRUE;
+CREATE GIT REPOSITORY IF NOT EXISTS SNOWFLAKE_EXAMPLE.PUBLIC.AGENTIC_PARSE_DEMO_REPO
+  API_INTEGRATION = AGENTIC_PARSE_DEMO_GIT_API
+  ORIGIN = 'https://github.com/sfc-gh-jkang/agentic-parse-demo-public.git';
+ALTER GIT REPOSITORY SNOWFLAKE_EXAMPLE.PUBLIC.AGENTIC_PARSE_DEMO_REPO FETCH;
+
+-- 2. Role, warehouse, schema, stages, tables and procedures.
+EXECUTE IMMEDIATE FROM @SNOWFLAKE_EXAMPLE.PUBLIC.AGENTIC_PARSE_DEMO_REPO/branches/main/sql/01_setup.sql;
+USE ROLE ACCOUNTADMIN;
+GRANT READ ON GIT REPOSITORY SNOWFLAKE_EXAMPLE.PUBLIC.AGENTIC_PARSE_DEMO_REPO TO ROLE AGENTIC_PARSE_DEMO_RL;
+GRANT USAGE ON SCHEMA SNOWFLAKE_EXAMPLE.PUBLIC TO ROLE AGENTIC_PARSE_DEMO_RL;
+USE ROLE AGENTIC_PARSE_DEMO_RL;
+USE WAREHOUSE SFE_AGENTIC_PARSE_DEMO_WH;
+EXECUTE IMMEDIATE FROM @SNOWFLAKE_EXAMPLE.PUBLIC.AGENTIC_PARSE_DEMO_REPO/branches/main/sql/02_parse_core.sql;
+
+-- 3. Corpus and scoring code: copied from the repo clone instead of PUT.
+COPY FILES INTO @SNOWFLAKE_EXAMPLE.AGENTIC_PARSE_DEMO.DOCS/corpus/
+  FROM @SNOWFLAKE_EXAMPLE.PUBLIC.AGENTIC_PARSE_DEMO_REPO/branches/main/corpus/;
+ALTER STAGE SNOWFLAKE_EXAMPLE.AGENTIC_PARSE_DEMO.DOCS REFRESH;
+EXECUTE IMMEDIATE FROM @SNOWFLAKE_EXAMPLE.PUBLIC.AGENTIC_PARSE_DEMO_REPO/branches/main/sql/03_register_corpus.sql;
+COPY FILES INTO @SNOWFLAKE_EXAMPLE.AGENTIC_PARSE_DEMO.CODE
+  FROM @SNOWFLAKE_EXAMPLE.PUBLIC.AGENTIC_PARSE_DEMO_REPO/branches/main/scoring/
+  FILES = ('score.py', 'compare_proc.py');
+EXECUTE IMMEDIATE FROM @SNOWFLAKE_EXAMPLE.PUBLIC.AGENTIC_PARSE_DEMO_REPO/branches/main/sql/04_compare_modes.sql;
+EXECUTE IMMEDIATE FROM @SNOWFLAKE_EXAMPLE.PUBLIC.AGENTIC_PARSE_DEMO_REPO/branches/main/sql/05_parse_cost.sql;
+EXECUTE IMMEDIATE FROM @SNOWFLAKE_EXAMPLE.PUBLIC.AGENTIC_PARSE_DEMO_REPO/branches/main/sql/06_app_support.sql;
+EXECUTE IMMEDIATE FROM @SNOWFLAKE_EXAMPLE.PUBLIC.AGENTIC_PARSE_DEMO_REPO/branches/main/sql/07_upload.sql;
+EXECUTE IMMEDIATE FROM @SNOWFLAKE_EXAMPLE.PUBLIC.AGENTIC_PARSE_DEMO_REPO/branches/main/sql/07b_value_and_data.sql;
+CALL SNOWFLAKE_EXAMPLE.AGENTIC_PARSE_DEMO.MATERIALIZE_DOCUMENT_FILES();
+
+-- 4. Search services, agent tools, agents (the last file also lists the SI agent in Snowflake Intelligence).
+EXECUTE IMMEDIATE FROM @SNOWFLAKE_EXAMPLE.PUBLIC.AGENTIC_PARSE_DEMO_REPO/branches/main/sql/08_search_agent.sql;
+EXECUTE IMMEDIATE FROM @SNOWFLAKE_EXAMPLE.PUBLIC.AGENTIC_PARSE_DEMO_REPO/branches/main/sql/09_agent_tools.sql;
+EXECUTE IMMEDIATE FROM @SNOWFLAKE_EXAMPLE.PUBLIC.AGENTIC_PARSE_DEMO_REPO/branches/main/sql/09b_agents.sql;
+
+-- 5. Design docs for the agent's explain tool: same chunker as scripts/load_design_docs.py, reading the repo clone.
+USE ROLE AGENTIC_PARSE_DEMO_RL;
+USE WAREHOUSE SFE_AGENTIC_PARSE_DEMO_WH;
+WITH LOAD_DESIGN_DOCS AS PROCEDURE ()
+  RETURNS STRING LANGUAGE PYTHON RUNTIME_VERSION = '3.12' PACKAGES = ('snowflake-snowpark-python')
+  IMPORTS = ('@SNOWFLAKE_EXAMPLE.PUBLIC.AGENTIC_PARSE_DEMO_REPO/branches/main/scripts/load_design_docs.py')
+  HANDLER = 'run'
+AS $$
+import fnmatch
+import load_design_docs as ldd
+
+REPO = "@SNOWFLAKE_EXAMPLE.PUBLIC.AGENTIC_PARSE_DEMO_REPO/branches/main/"
+TABLE = "SNOWFLAKE_EXAMPLE.AGENTIC_PARSE_DEMO.DESIGN_DOCS"
+
+def run(session):
+    # LS names are "<repo>/branches/<branch>/<path>" for a git clone, "<stage>/<path>" for a stage.
+    names = []
+    for r in session.sql(f"LS {REPO}").collect():
+        parts = r["name"].split("/")
+        names.append("/".join(parts[3:] if len(parts) > 3 and parts[1] == "branches" else parts[1:]))
+    rows = []
+    for pattern in ldd.DOC_GLOBS:
+        for rel in sorted(n for n in names if fnmatch.fnmatch(n, pattern)):
+            text = session.file.get_stream(REPO + rel).read().decode()
+            rows += [(rel, s, c) for s, c in ldd.chunk_markdown(text)]
+    session.sql(f"DELETE FROM {TABLE}").collect()
+    session.create_dataframe(rows, ["PATH", "SECTION", "CHUNK"]).write.save_as_table(TABLE, mode="append")
+    return f"loaded {len(rows)} design-doc chunks"
+$$
+CALL LOAD_DESIGN_DOCS();
+ALTER CORTEX SEARCH SERVICE SNOWFLAKE_EXAMPLE.AGENTIC_PARSE_DEMO.DESIGN_DOCS_SEARCH REFRESH;
+
+-- Next: snowsight/parse_corpus.sql (billed), then deploy the app (docs/install-snowsight.md).

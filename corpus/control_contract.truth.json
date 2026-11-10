@@ -1,0 +1,28 @@
+{
+  "doc_id": "control_contract",
+  "pages": 1,
+  "visuals": [
+    {
+      "channel": "text",
+      "clauses": [
+        "Services",
+        "Fees",
+        "Term",
+        "Confidentiality",
+        "Limitation of liability",
+        "Governing law",
+        "Termination"
+      ],
+      "effective_date": "2026-08-03",
+      "governing_law": "State of Delaware",
+      "image_type": "document_page",
+      "page": 0,
+      "parties": [
+        "Northwind Analytics, Inc.",
+        "Contoso Retail Group"
+      ],
+      "role": "body",
+      "title": "MASTER SERVICES AGREEMENT"
+    }
+  ]
+}

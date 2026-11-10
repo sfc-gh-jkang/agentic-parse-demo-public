@@ -1,0 +1,49 @@
+{
+  "doc_id": "whiteboard_photo",
+  "pages": 1,
+  "visuals": [
+    {
+      "accept_types": [
+        "photo_with_text",
+        "diagram"
+      ],
+      "bbox": {
+        "bottom_right_x": 1,
+        "bottom_right_y": 1,
+        "top_left_x": 0,
+        "top_left_y": 0
+      },
+      "bullets": [
+        "PDFs",
+        "scans",
+        "charts",
+        "stamps",
+        "pages",
+        "answers"
+      ],
+      "channel": "image",
+      "edges": [
+        [
+          "Ingest",
+          "Parse"
+        ],
+        [
+          "Parse",
+          "Search"
+        ],
+        [
+          "Search",
+          "Agent"
+        ]
+      ],
+      "image_type": "photo_with_text",
+      "nodes": [
+        "Ingest",
+        "Parse",
+        "Search",
+        "Agent"
+      ],
+      "page": 0
+    }
+  ]
+}
