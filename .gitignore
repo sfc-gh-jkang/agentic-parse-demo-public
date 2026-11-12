@@ -19,3 +19,4 @@ config.env
 credentials.json
 **/secrets/
 .snowflake/
+examples/large-sheet-schedules/out/

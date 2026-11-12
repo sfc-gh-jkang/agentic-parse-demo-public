@@ -121,6 +121,7 @@ Step by step with prerequisites: [docs/QUICKSTART.md](docs/QUICKSTART.md). No lo
 - How it works, setup detail, presenter tools, tests and pitfalls: [docs/technical-guide.md](docs/technical-guide.md).
 - Design and evidence: [docs/SPEC.md](docs/SPEC.md), [docs/audits.md](docs/audits.md), [docs/stage2-report.md](docs/stage2-report.md), [docs/model-eval.md](docs/model-eval.md). Vocabulary: [GLOSSARY.md](GLOSSARY.md).
 - Beyond the demo: [docs/production-path.md](docs/production-path.md) (the pipeline to build for real), [docs/sharing.md](docs/sharing.md) (another SE, another account).
+- Worked example, tables on large drawing sheets: [examples/large-sheet-schedules](examples/large-sheet-schedules/README.md) (why extraction fails on a 24x36 sheet, and the locate, crop, parse and extract fix).
 - Security notes: [docs/security-review.md](docs/security-review.md).
 
 ## Owner and license
